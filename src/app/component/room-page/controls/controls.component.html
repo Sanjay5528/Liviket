@@ -1,0 +1,42 @@
+<!-- <div class="controls-wrapper">
+  <button class="audio-button" [disabled]="audioButtonDisabled" (click)="toggleAudio()">
+    {{ micPub?.isMuted ? 'Unmute' : 'Mute' }}
+  </button>
+  <button class="video-button" [disabled]="videoButtonDisabled" (click)="toggleVideo()">
+    {{ camPub?.isMuted ? 'Start Video' : 'Stop Video' }}
+  </button>
+  <button class="screen-button" [disabled]="screenButtonDisabled" *ngIf="enableScreenShare" (click)="toggleScreenShare()">
+    {{ roomState.localParticipant.isScreenShareEnabled ? 'Stop Sharing' : 'Share Screen' }}
+  </button>
+  <button class="screen-button" (click)="leaveRoom()">Leave</button>
+</div> -->
+
+<div class="controlsWrapper">
+  <button
+    class="button control-button"
+    [disabled]="audioButtonDisabled"
+    (click)="toggleMicrophone()"
+  >
+     Microphone
+  </button>
+  <button
+    class="button control-button"
+    [disabled]="videoButtonDisabled"
+    (click)="toggleCamera()"
+  >
+    Camera
+  </button>
+  <button
+    class="button control-button"
+    [disabled]="screenButtonDisabled"
+    (click)="toggleScreenShare()"
+  >
+    Screen Share
+  </button>
+  <button
+    class="button dangerButton control-button"
+    (click)="leaveRoomClicked()"
+  >
+    End
+  </button>
+</div>

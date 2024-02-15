@@ -1,0 +1,105 @@
+
+
+
+<!-- room-page.component.html -->
+<!-- <div class="roomContainer">
+  <div class="topBar">
+    <h2>LiveKit Video</h2>
+    <div class="right">
+      <div>
+        <input
+        id="showStats"
+        type="checkbox"
+        [ngModel]="displayOptions.showStats"
+        (ngModelChange)="updateOptions({ showStats: $event })"
+      />
+      
+      
+        <label for="showStats">Show Stats</label>
+      </div>
+      <div>
+        <button
+          class="iconButton"
+          [disabled]="displayOptions.stageLayout === 'grid'"
+          (click)="updateOptions({ stageLayout: 'grid' })"
+        >
+          <fa-icon [icon]="['fas', 'th-large']" [size]="'lg'"></fa-icon>
+        </button>
+        <button
+          class="iconButton"
+          [disabled]="displayOptions.stageLayout === 'speaker'"
+          (click)="updateOptions({ stageLayout: 'speaker' })"
+        >
+          <fa-icon [icon]="['fas', 'square']" [size]="'lg'"></fa-icon>
+        </button>
+      </div>
+      <div class="participantCount">
+        <fa-icon [icon]="['fas', 'user-friends']" [size]="'lg'"></fa-icon>
+        <span>{{ numParticipants }}</span>
+      </div>
+    </div>
+  </div>
+  <app-live-kit-room
+    [url]="url"
+    [token]="token || ''"
+    (roomConnected)="onRoomConnected($event)"
+  ></app-live-kit-room>
+</div> -->
+
+<div class="roomContainer">
+  <div class="topBar">
+    <h2>KriyaTec</h2>
+    <div class="right">
+      <div>
+        <input
+          id="showStats"
+          type="checkbox"
+          (ngModelChange)="updateOptions({ showStats: $event })"
+          />
+        <label for="showStats">Show Stats</label>
+      </div>
+      <div>
+        <button
+          class="iconButton"
+          [disabled]="displayOptions.stageLayout === 'grid'"
+          (click)="updateOptions({ stageLayout: 'grid' })"
+        >
+          <fa-icon [icon]="faThLarge"></fa-icon>
+        </button>
+        <button
+          class="iconButton"
+          [disabled]="displayOptions.stageLayout === 'speaker'"
+          (click)="updateOptions({ stageLayout: 'speaker' })"
+        >
+          <fa-icon [icon]="faSquare"></fa-icon>
+        </button>
+      </div>
+      <div class="participantCount">
+        <fa-icon [icon]="faUserFriends"></fa-icon>
+        <span>{{ numParticipants }}</span>
+      </div>
+    </div>
+  </div>
+  <!-- <app-live-kit-room
+    [url]="url"
+    [token]="token || ''"
+    (connected)="onConnected(room)"
+    [roomOptions]="roomOptions"
+    (leave)="onLeave()"
+  ></app-live-kit-room> -->
+  <!-- <app-pre-join></app-pre-join> -->
+  <app-live-kit-room
+  [url]="url"
+  [token]="token || ''"  
+  [roomOptions]="roomOptions"
+  [connectOptions]="RoomConnectOptions"
+  [stageRenderer]="StageRenderer"
+  [participantRenderer]="ParticipantRenderer"
+  [controlRenderer]="ControlRenderer"
+  (connected)="onConnected($event)"
+  (leave)="onLeave()"
+></app-live-kit-room>
+
+</div>
+
+

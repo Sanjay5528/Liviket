@@ -1,0 +1,40 @@
+<!-- <button
+  [disabled]="isButtonDisabled"
+  (click)="handleClick()"
+  [ngClass]="className"
+  style="height: 20px; width: 60px;"
+>
+  {{ isMuted ? unmuteText : muteText }}
+</button> -->
+
+<!-- <button (click)="onClickHandler()">
+    {{ isMuted ? unmuteText : muteText }}
+  </button>
+  <select *ngIf="showSourceSelect" (change)="onSourceSelectedHandler($event.target.value)">
+    <option *ngFor="let source of audioSources" [value]="source.deviceId">
+      {{ source.label }}
+    </option>
+  </select> -->
+
+
+
+  <div [ngClass]="className">
+    <button
+      [disabled]="isButtonDisabled"
+      (click)="handleClick()"
+      [ngClass]="popoverTriggerBtnClassName"
+      style="height: 20px; width: 60px;"
+    >
+      {{ isMuted ? unmuteText : muteText }}
+    </button>
+    <ul *ngIf="menuItems.length > 0" class="menu" [ngClass]="popoverContainerClassName">
+      <li
+        *ngFor="let menuItem of menuItems"
+        (click)="handleMenuItem(menuItem)"
+        class="menu-item"
+      >
+        {{ menuItem.label }}
+      </li>
+    </ul>
+  </div>
+  

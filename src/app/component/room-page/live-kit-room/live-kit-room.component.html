@@ -1,0 +1,35 @@
+<div>
+  <ng-container *ngIf="selectedStageRenderer()">
+    <!-- Render the selected stage here -->
+    <ng-container [ngTemplateOutlet]="selectedStageRenderer()"></ng-container>
+  </ng-container>
+
+  <!-- [participant]="participant" -->
+  <app-participant-view
+  [width]="'100%'"
+  [height]="'100%'" 
+  [className]="'your-custom-class'" 
+  [aspectWidth]="16" 
+  [aspectHeight]="9"
+  [orientation]="'landscape'" 
+  [displayName]="'srinath'" 
+  [showOverlay]="true" 
+  [showConnectionQuality]="true" 
+  (mouseenter)="onParticipantMouseEnter()" 
+  (mouseleave)="onParticipantMouseLeave()"
+  (click)="onParticipantClick()"
+></app-participant-view>
+<!-- <app-video-renderer style="color:wheat;"   [track]="videoTrack" [isLocal]="true"></app-video-renderer> -->
+<app-controls></app-controls>
+<!-- <div>
+  <app-stage-view
+    [roomState]="roomState"
+    [participantRenderer]="participantRenderer"
+    [controlRenderer]="controlRenderer"
+    [onLeave]="onLeave"
+  ></app-stage-view>
+</div> -->
+
+
+</div>
+

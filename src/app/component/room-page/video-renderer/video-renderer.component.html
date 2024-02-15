@@ -1,0 +1,15 @@
+<div
+class="video-container"
+[ngStyle]="{
+  'width': width || 'auto',
+  'height': height || 'auto',
+  'object-fit': objectFit || 'cover',
+  'transform': isMirrored ? 'scaleX(-1)' : 'none'
+}"
+>
+<video
+  #videoElement
+  [class]="className"
+  [style.transform]="isMirrored ? 'scaleX(-1)' : 'none'"
+></video>
+</div>

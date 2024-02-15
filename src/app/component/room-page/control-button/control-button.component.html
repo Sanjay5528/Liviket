@@ -1,0 +1,23 @@
+<div [ngClass]="buttonClasses">
+  <ng-container *ngIf="icon">
+    <fa-icon class="icon" [icon]="icon"></fa-icon>
+  </ng-container>
+  {{ label }}
+  <ng-container *ngIf="menuItems && menuItems.length > 0">
+    <button
+      [disabled]="disabled"
+      class="button dropdown"
+      (click)="toggleMenu()"
+    >
+      <div class="separator"></div>
+      <fa-icon [icon]="faChevronDown"></fa-icon>
+    </button>
+    <div class="popover-menu" [ngClass]="popoverContainerClassName">
+      <ul class="list">
+        <li *ngFor="let item of menuItems" (click)="handleMenuItemClick(item)">
+          {{ item.label }}
+        </li>
+      </ul>
+    </div>
+  </ng-container>
+</div>

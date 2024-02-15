@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="grid-stage" [ngClass]="gridClass">
+      <app-participant-view
+        *ngFor="let participant of visibleParticipants"
+        [participant]="participant"
+        [orientation]="'landscape'"
+        [width]="'100%'"
+        [height]="'100%'"
+        [showOverlay]="showOverlay"
+        [showConnectionQuality]="true"
+        (mouseenter)="showOverlay = true"
+        (mouseleave)="showOverlay = false"
+      ></app-participant-view>
+    </div>
+    <div class="controls-area">
+      <app-controls
+        
+        (leave)="onLeave()"
+      ></app-controls>
+    </div>
+  </div>
+  <!-- [room]="roomState.room" -->

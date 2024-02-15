@@ -1,0 +1,81 @@
+<div class="prejoin">
+  <main>
+    <h2>LiveKit Video</h2>
+    <hr />
+    <div class="entrySection">
+      <div>
+        <div class="label">LiveKit URL</div>
+        <div>
+          <input type="text" name="url" [(ngModel)]="url" />
+        </div>
+      </div>
+      <div>
+        <div class="label">Token</div>
+        <div>
+          <input type="text" name="token" [(ngModel)]="token" autofocus />
+        </div>
+      </div>
+      <div class="options">
+        <div>
+          <input id="simulcast-option" type="checkbox" name="simulcast" [(ngModel)]="simulcast" />
+          <label for="simulcast-option">Simulcast</label>
+        </div>
+        <div>
+          <input id="dynacast-option" type="checkbox" name="dynacast" [(ngModel)]="dynacast" />
+          <label for="dynacast-option">Dynacast</label>
+        </div>
+        <div>
+          <input id="adaptivestream-option" type="checkbox" name="adaptiveStream" [(ngModel)]="adaptiveStream" />
+          <label for="adaptivestream-option">Adaptive Stream</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="videoSection" style="width: 100%;
+      height: 100%;
+      border-radius: 4px;">
+      <!-- Your video content goes here -->
+
+      <app-video-renderer [track]="videoTrack" [isLocal]="true"></app-video-renderer>
+
+    </div>
+
+    <div class="controlSection">
+      <div>
+        <app-audio-select-button [isMuted]="!audioEnabled" (ngModelChange)="toggleAudio()"
+          (onSourceSelected)="setAudioDevice($event)">
+        </app-audio-select-button>
+
+        <!-- <app-video-select-button
+            [isEnabled]="videoTrack !== undefined"
+            (ngModelChange)="toggleVideo()"
+            (sourceSelected)="selectVideoDevice($event)"
+          ></app-video-select-button>  -->
+
+
+        <app-video-select-button [isEnabled]="!videoEnabled" [disableText]="'Disable Video'"
+          [enableText]="'Enable Video'" (click)="toggleVideo()" [requestPermissions]="true"
+          [className]="'custom-button-class'" [isButtonDisabled]="false"
+          [popoverContainerClassName]="'popover-container-class'"
+          [popoverTriggerBtnClassName]="'popover-trigger-btn-class'" (onClick)="handleButtonClick()"
+          (sourceSelected)="selectVideoDevice($event)"></app-video-select-button>
+
+
+      </div>
+      <div class="right">
+        <!-- <button labrl="connect1"></button>
+        <app-control-button label="Connect" [disabled]="connectDisabled" icon="faBolt"
+          (click)="connectToRoom()"></app-control-button>
+      </div> -->
+      <!-- pre-join.component.html -->
+      <app-control-button label="Connect" [disabled]="connectDisabled"  (click)="connectToRoom()">
+        <fa-icon [icon]="['fas', 'bolt']"></fa-icon>
+      </app-control-button>
+      </div>
+
+    </div>
+  </main>
+  <footer>
+    This page is built with Kriyatec
+  </footer>
+</div>

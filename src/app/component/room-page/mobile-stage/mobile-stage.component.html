@@ -1,0 +1,31 @@
+<!-- mobile-stage.component.html -->
+<div class="container">
+    <div class="stage">
+      <div>{{ mainView }}</div>
+    </div>
+    <div class="participantsArea">
+      <ng-container *ngFor="let participant of sortedParticipants">
+        <app-participant-view
+          *ngIf="participantRenderer && mainView === 'participantView'"
+          [participant]="participant"
+          [class.participant]="true"
+          [aspectWidth]="4"
+          [aspectHeight]="3"
+          [showOverlay]="showOverlay"
+          (mouseenter)="showOverlay = true"
+          (mouseleave)="showOverlay = false"
+        ></app-participant-view>
+      </ng-container>
+    </div>
+    <div class="controlsArea">
+      <app-controls
+        *ngIf="controlRenderer"
+        [room]="roomState.room"
+        [enableScreenShare]="false"
+        (onLeave)="onLeave()"
+      ></app-controls>
+    </div>
+  </div>
+
+  <!-- [room]="roomState.room" -->
+  

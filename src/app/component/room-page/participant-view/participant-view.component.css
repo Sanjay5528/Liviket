@@ -1,0 +1,12 @@
+.icon {
+    height: 24px; /* Adjust the height as needed */
+  }
+  .video-class{ 
+    width: 100%;
+    height: 780px;
+    object-fit: cover;
+    transform: none;
+    background: #c4c4c4;
+
+
+  }

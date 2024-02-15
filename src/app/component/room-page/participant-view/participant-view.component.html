@@ -1,0 +1,97 @@
+<!-- <div  [ngClass]="['participant', className, isSpeaking ? speakerClassName : '']">
+  <div [ngStyle]="{ width: width, height: height }" >
+    <app-video-renderer
+      *ngIf="cameraPublication?.track"
+      [track]="cameraPublication?.track"
+      [isLocal]="isLocal"
+      [objectFit]="objectFit"
+      [style.width]="'100%'"
+      [style.height]="'100%'"
+      [ngClass]="['video']"
+      (sizeChanged)="handleResize($event)"
+    ></app-video-renderer>
+  </div>
+
+
+  <ng-container > 
+    <div>
+    <p style="color: azure;">srinath</p>
+    <div class="center">
+
+    </div>
+
+    <div>
+    <fa-icon [icon]="isAudioMuted ? 'microphone-slash' : 'microphone'" [size]="'lg'"></fa-icon>
+    
+    </div>
+    </div>
+    </ng-container>
+</div> -->
+<div
+  [ngClass]="classes.join(' ')"
+  [ngStyle]="containerStyles"
+  (mouseenter)="onMouseEnter()"
+  (mouseleave)="onMouseLeave()"
+  (click)="handleClick()"
+>
+  <div class="video-class"  *ngIf="aspectWidth && aspectHeight">
+    <!-- <app-aspect-ratio [ratio]="aspectWidth / aspectHeight"> -->
+      <app-video-renderer 
+        [track]="cameraPublication?.track"
+        [isLocal]="isLocal"
+        [objectFit]="objectFit"
+        width="100%"
+        height="100%"
+        [ngClass]="['video']"        
+        (sizeChanged)="handleResize($event)"
+      ></app-video-renderer>
+    <!-- </app-aspect-ratio> -->
+  </div>
+  <div *ngIf="!aspectWidth || !aspectHeight" [ngClass]="['placeholder']"></div>
+
+  <div *ngIf="isDisplayNameVisible" [ngClass]="['participantBar']">
+    <div [ngStyle]="{'color': 'white'}" [ngClass]="'name'">{{ displayName }}</div>
+    <div [ngClass]="'center'">
+      <div [ngClass]="'stats'">
+        <span>{{ videoSize }}</span>
+        <span *ngIf="currentBitrate !== undefined && currentBitrate > 0">
+          &nbsp;{{ (currentBitrate / 1024) | number: '1.0-1' }} kbps
+        </span>
+      </div>
+    </div>
+    <div *ngIf="showConnectionQuality">
+      <div *ngIf="connectionQuality === ConnectionQuality.Excellent" class="connectionQuality3"></div>
+      <div *ngIf="connectionQuality === ConnectionQuality.Good" class="connectionQuality2"></div>
+      <div *ngIf="connectionQuality === ConnectionQuality.Poor" class="connectionQuality1"></div>      
+    </div>
+    <div>
+      <fa-icon [icon]="isAudioMuted ? faMicrophoneSlash : faMicrophone" height="24" class="{{ isAudioMuted ? 'iconRed' : 'iconNormal' }}"></fa-icon>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- <div class="participant" [ngClass]="['participant', className, isSpeaking ? speakerClassName : '']">
+  <div [ngStyle]="{ width: width, height: height }" class="video-container">
+    <app-video-renderer
+      *ngIf="cameraPublication?.track"
+      [track]="cameraPublication?.track"
+      [isLocal]="isLocal"
+      [objectFit]="objectFit"
+      [style.width]="'100%'"
+      [style.height]="'100%'"
+      [ngClass]="['video']"
+      (sizeChanged)="handleResize($event)"
+    ></app-video-renderer>
+  </div>
+
+  <div class="participantBar">
+    <p style="color: azure;">{{ displayName }}</p>
+    <fa-icon [icon]="isAudioMuted ? 'microphone-slash' : 'microphone'" [size]="'lg'"></fa-icon>
+  </div>
+</div> -->

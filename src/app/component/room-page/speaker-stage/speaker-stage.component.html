@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="stage">
+    <div class="stageCenter">
+      <div *ngIf="roomState.error; else connectingBlock">error {{ roomState.error.message }}</div>
+      <ng-template #connectingBlock>
+        <div *ngIf="roomState.isConnecting">connecting</div>
+        <div *ngIf="!roomState.room">room closed</div>
+        <div *ngIf="sortedParticipants.length === 0">no one is in the room</div>
+        <div *ngIf="roomState.room && !roomState.isConnecting && sortedParticipants.length > 0">
+          <!-- Render main view based on conditions -->
+          <!-- Replace app-screen-share-view with the actual component name -->
+          <!-- Use *ngIf to conditionally render -->
+          <app-screen-share-view
+            *ngIf="screenTrack; else mainParticipant"
+            [track]="screenTrack"
+            [height]="'100%'"
+            [width]="'100%'"
+          ></app-screen-share-view>
+          <ng-template #mainParticipant>
+            <!-- Replace app-participant-view with the actual component name -->
+            <!-- Use *ngIf to conditionally render -->
+            <app-participant-view
+              [width]="'100%'"
+              [height]="'100%'"
+              [orientation]="'landscape'"
+              [showOverlay]="showOverlay"
+              [showConnectionQuality]="true"
+              (mouseEnter)="showOverlay = true"
+              (mouseLeave)="showOverlay = false"
+            ></app-participant-view>
+          </ng-template>
+        </div>
+      </ng-template>
+    </div>
+    <div class="sidebar">
+      <ng-container *ngFor="let participant of sortedParticipants">
+        <!-- Replace app-participant-view with the actual component name -->
+        <app-participant-view
+          [participant]="participant"
+          [width]="'100%'"
+          [aspectWidth]="16"
+          [aspectHeight]="9"
+          [showOverlay]="showOverlay"
+          (mouseEnter)="showOverlay = true"
+          (mouseLeave)="showOverlay = false"
+        ></app-participant-view>
+      </ng-container>
+    </div>
+  </div>
+  <div class="controlsArea">
+    <!-- Replace app-controls-view with the actual component name -->
+    <app-controls [room]="room" (onLeave)="onLeave()"></app-controls>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<!-- <button
+  [disabled]="isButtonDisabled"
+  (click)="handleClick()"
+  [ngClass]="className"
+  style="height: 20px; width: 60px;"
+>
+
+  {{ isEnabled ? disableText : enableText }}
+</button> -->
+
+
+<!-- 
+<button [ngClass]="className" [disabled]="isButtonDisabled" (click)="onClick.emit()">
+  {{ isEnabled ? enableText : disableText }}
+</button>
+
+<div *ngIf="requestPermissions && isEnabled" [ngClass]="popoverContainerClassName">
+  <button [ngClass]="popoverTriggerBtnClassName" (click)="requestMediaPermissions()">
+    Request Permissions
+  </button>
+</div> -->
+
+
+
+<div [ngClass]="className">
+  <button
+    [disabled]="isButtonDisabled"
+    (click)="onClick.emit()"
+    [ngClass]="popoverTriggerBtnClassName"
+    style="height: 20px; width: 60px;"
+  >
+    {{ isEnabled ? enableText : disableText }}
+  </button>
+  <ul *ngIf="menuItems.length > 0" class="menu" [ngClass]="popoverContainerClassName">
+    <li *ngFor="let menuItem of menuItems" (click)="handleMenuItem(menuItem)" class="menu-item">
+      {{ menuItem.label }}
+    </li>
+  </ul>
+</div>
+
